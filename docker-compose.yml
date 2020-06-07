@@ -1,0 +1,20 @@
+version: "3.0"
+
+services:
+  centos-minecraft-spigot:
+    build: #buildしたときのimage名はimageに指定した名前になる
+      context: ./
+      dockerfile: Dockerfile
+    image: hazuki3417/centos-minecraft-spigot
+    container_name: centos-minecraft-spigot
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./server:/opt/minecraft
+    tty: true
+
+networks:
+  common_link:
+    external: true
